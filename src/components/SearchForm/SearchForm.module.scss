@@ -5,30 +5,99 @@
     display: flex;
     .leftWrapper {
         width: 50%;
+        label {
+            display: inline-block;
+            margin-bottom: 20px;
+            span {
+                font-size: 25px;
+            }
+        }
+        input {
+            width: 242px;
+            padding: 13px 0;
+            font-size: 14px;
+            &:focus {
+                padding: 13px 0 13px 17px;
+                &::placeholder {
+                    opacity: 0;
+                }
+            }
+            &::placeholder {
+                text-align: center;
+                font-size: 14px;
+                line-height: 17px;
+                letter-spacing: 0.03em;
+                color: #949494;
+                opacity: 0.4;
+            }
+        }
         .innCompany {
             margin-bottom: 30px;
-            label {
-                display: inline-block;
+        }
+        .tonalityWrapper {
+            position: relative;
+            margin-bottom: 20px;
+            p {
+                font-size: 18px;
                 margin-bottom: 20px;
-                span {
-                    font-size: 25px;
-                }
             }
-            input {
-                width: 242px;
-                padding: 13px 0 13px 17px;
+            .tonalityItems {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
                 font-size: 14px;
-                &::placeholder {
-                    text-align: center;
-                    font-size: 14px;
-                    line-height: 17px;
-                    letter-spacing: 0.03em;
-                    color: #949494;
-                    opacity: 0.4;
+                width: 242px;
+                height: 45px;
+                border-radius: 5px;
+                box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.05);
+                border: 1px solid #c7c7c7;
+                outline: none;
+                line-height: 17px;
+                letter-spacing: 0.03em;
+                padding: 13px 15px 13px 22px;
+                margin-bottom: 5px;
+            }
+            .tonalityPopup {
+                position: absolute;
+                width: 242px;
+                border-radius: 5px;
+                box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.05);
+                z-index: 1000;
+                background-color: #fff;
+                overflow: hidden;
+
+                ul {
+                    li {
+                        width: 100%;
+                        text-align: center;
+                        padding: 10px;
+                        cursor: pointer;
+                        transition: all 0.3s ease-in-out;
+                        font-size: 14px;
+                        &:hover {
+                            background-color: #000;
+                            color: #fff;
+                        }
+                    }
                 }
             }
-            .error {
-                color: red;
+        }
+        .count {
+            margin-bottom: 30px;
+            input {
+                padding: 13px 0 13px 17px;
+            }
+        }
+        .calendar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .calendar_input {
+                width: 49%;
+                input {
+                    width: 100%;
+                }
             }
         }
     }

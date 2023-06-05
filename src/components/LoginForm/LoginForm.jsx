@@ -8,7 +8,7 @@ import keyLockImg from '../../assets/img/form/keylock.svg';
 import styles from './LoginForm.module.scss';
 import Input from '../UI/Input/Input';
 
-function Form() {
+function LoginForm() {
     return (
         <div className={styles.formWrapper}>
             <img className={styles.keyLock} src={keyLockImg} alt="keylock" />
@@ -49,4 +49,4 @@ function Form() {
     );
 }
 
-export default Form;
+export default LoginForm;

@@ -11,8 +11,8 @@ function App() {
 
             <main className="container">
                 {/* <Home /> */}
-                {/* <Login /> */}
-                <SearchPage />
+                <Login />
+                {/* <SearchPage /> */}
             </main>
 
             <Footer />

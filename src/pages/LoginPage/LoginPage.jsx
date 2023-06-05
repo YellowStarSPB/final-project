@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './LoginPage.module.scss';
 import image from '../../assets/img/loginPage/image.png';
 
-import Form from '../../components/LoginForm/LoginForm';
+import LoginForm from '../../components/LoginForm/LoginForm';
 function Login() {
     return (
         <section className={styles.loginSection}>
@@ -12,7 +12,7 @@ function Login() {
                     <img src={image} alt="titleImage" />
                 </div>
             </div>
-            <Form />
+            <LoginForm />
         </section>
     );
 }
