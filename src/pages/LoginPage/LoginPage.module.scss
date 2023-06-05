@@ -1,0 +1,19 @@
+.loginSection {
+    margin-top: 70px;
+    display: flex;
+    margin-bottom: 80px;
+    min-height: 70.3vh;
+
+    .titleWrapper {
+        width: 60%;
+        h2 {
+            margin-bottom: 14px;
+            font-size: 40px;
+            line-height: 48px;
+            letter-spacing: 0.02em;
+        }
+        div {
+            padding-left: 110px;
+        }
+    }
+}

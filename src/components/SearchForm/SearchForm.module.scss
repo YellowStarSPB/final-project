@@ -1,0 +1,38 @@
+.searchForm {
+    padding: 21px 40px 32px 44px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    display: flex;
+    .leftWrapper {
+        width: 50%;
+        .innCompany {
+            margin-bottom: 30px;
+            label {
+                display: inline-block;
+                margin-bottom: 20px;
+                span {
+                    font-size: 25px;
+                }
+            }
+            input {
+                width: 242px;
+                padding: 13px 0 13px 17px;
+                font-size: 14px;
+                &::placeholder {
+                    text-align: center;
+                    font-size: 14px;
+                    line-height: 17px;
+                    letter-spacing: 0.03em;
+                    color: #949494;
+                    opacity: 0.4;
+                }
+            }
+            .error {
+                color: red;
+            }
+        }
+    }
+    .rightWrapper {
+        width: 50%;
+    }
+}

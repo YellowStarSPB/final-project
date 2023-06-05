@@ -1,0 +1,100 @@
+.formWrapper {
+    padding: 0 0 0 73px;
+    position: relative;
+    .keyLock {
+        position: absolute;
+        top: -60px;
+        left: 32px;
+    }
+    .form {
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
+        border-radius: 10px;
+        padding: 25px 25px 39px;
+        width: 430px;
+        .btnWrapper {
+            display: flex;
+            margin-bottom: 40px;
+            justify-content: space-between;
+            gap: 15px;
+            button {
+                background: none;
+                border-bottom: 2px solid #029491;
+                font-size: 16px;
+                color: #029491;
+                line-height: 19px;
+                letter-spacing: 0.02em;
+            }
+            .login {
+                padding: 0 50px 8px;
+                cursor: pointer;
+            }
+            .register {
+                padding: 0 23px 8px;
+                color: #c7c7c7;
+                border-bottom: 2px solid #c7c7c7;
+                cursor: not-allowed;
+            }
+        }
+        .inputWrapper {
+            label {
+                margin-bottom: 15px;
+                color: #949494;
+                font-size: 16px;
+            }
+            input {
+                width: 100%;
+                padding: 12px 0 12px 20px;
+                font-size: 16px;
+            }
+            .loginInput {
+                margin-bottom: 20px;
+            }
+            .passwordInput {
+                margin-bottom: 30px;
+            }
+        }
+        .submit {
+            width: 100%;
+            font-size: 22px;
+            font-weight: 500;
+            color: #fff;
+            letter-spacing: 0.02em;
+            margin-bottom: 15px;
+        }
+        .disabled {
+            opacity: 0.5;
+        }
+        .recoverPassword {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            button {
+                background: none;
+                color: #5970ff;
+                font-size: 14px;
+                text-decoration: underline;
+                letter-spacing: 0.02em;
+                cursor: pointer;
+            }
+        }
+        .entryOptions {
+            p {
+                font-size: 16px;
+                color: #949494;
+                margin-bottom: 15px;
+            }
+            div {
+                display: flex;
+                align-items: center;
+                img {
+                    margin-right: 10px;
+                    cursor: not-allowed;
+                    &:last-child {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}

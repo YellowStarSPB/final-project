@@ -1,0 +1,76 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 60px;
+    
+    .logo {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .navigate {
+            display: flex;
+            margin-right: 128px;
+            li {
+                margin-right: 49px;
+                font-size: 14px;
+                cursor: pointer;
+                &:last-child {
+                    margin: 0;
+                }
+            }
+            @media screen and (max-width: 1050px) {
+                display: none;
+            }
+        }
+        .info {
+            padding: 15px 10px;
+            background: #d9d9d97f;
+            border-radius: 5px;
+            text-align: center;
+            margin-right: 128px;
+            p {
+                font-size: 10px;
+                span {
+                    font-size: 14px;
+                    font-weight: 700;
+                }
+            }
+        }
+        .accauntWrapper {
+            display: flex;
+            align-items: center;
+            .accauntWrapper__info {
+                margin-right: 3px;
+                text-align: end;
+                width: 70%;
+                p {
+                    font-size: 14px;
+                }
+                button {
+                    border: none;
+                    background: none;
+                    font-size: 10px;
+                    cursor: pointer;
+                }
+            }
+            .accauntWrapper__img {
+                width: 30%;
+                height: 100%;
+            }
+            @media screen and (max-width: 1050px) {
+                display: none;
+            }
+        }
+    }
+}
