@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './LoginPage.module.scss';
 import image from '../../assets/img/loginPage/image.png';
 
 import LoginForm from '../../components/LoginForm/LoginForm';
-function Login() {
+import { useSelector } from 'react-redux';
+import { useLocation, useNavigate } from 'react-router-dom';
+function LoginPage() {
     return (
         <section className={styles.loginSection}>
             <div className={styles.titleWrapper}>
@@ -17,4 +19,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default LoginPage;

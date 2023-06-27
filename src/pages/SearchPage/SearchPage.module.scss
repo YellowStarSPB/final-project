@@ -1,6 +1,8 @@
 .searchPage {
+    padding-top: 70px;
     display: flex;
     margin-bottom: 64px;
+    height: 100%;
     .leftWrapper {
         margin-right: 80px;
         
@@ -13,6 +15,57 @@
         p {
             margin-bottom: 47px;
             font-size: 20px;
+        }
+    }
+    .imageWrapper {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+        justify-content: flex-end;
+
+        .firstImg {
+            // position: absolute;
+            // top: 70px;
+            // right: 370px;
+            // z-index: -1;
+
+            // width: 91px;
+            // height: auto;
+            // position: relative;
+            // top: 80px;
+            // left: -400px;
+            position: absolute;
+            top: 40px;
+            right: 335px;
+            z-index: -1;
+
+        }
+        .secondImg {
+            // position: absolute;
+            // top: 90px;
+            // right: 70px;
+            // z-index: 0;
+            // width: 140px;
+            // height: auto;
+            // position: relative;
+            // top: -20px;
+            // right: 120px;
+            position: absolute;
+            top: 35px;
+            right: 65px;
+            z-index: -1;
+
+        }
+        .thirdImg {
+            // position: relative;
+            // z-index: -1;
+            // bottom: -130px;
+            // width: 100%;
+            // height: auto;
+            // z-index: -1;
+            width: 100%;
+            height: auto;
         }
     }
 }

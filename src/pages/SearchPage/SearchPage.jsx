@@ -10,7 +10,11 @@ function SearchPage() {
     return (
         <section className={styles.searchPage}>
             <div className={styles.leftWrapper}>
-                <h2>Найдите необходимые данные в пару кликов.</h2>
+                <h2>
+                    Найдите необходимые
+                    <br />
+                    данные в пару кликов.
+                </h2>
                 <p>
                     Задайте параметры поиска.
                     <br />
@@ -20,9 +24,9 @@ function SearchPage() {
             </div>
 
             <div className={styles.imageWrapper}>
-                <img src={firstImg} alt="bg" />
-                <img src={secondImg} alt="bg" />
-                <img src={thirdImg} alt="bg" />
+                <img className={styles.firstImg} src={firstImg} alt="bg" />
+                <img className={styles.secondImg} src={secondImg} alt="bg" />
+                <img className={styles.thirdImg} src={thirdImg} alt="bg" />
             </div>
         </section>
     );

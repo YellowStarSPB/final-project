@@ -1,0 +1,64 @@
+.searchResultSection {
+    height: 100%;
+    padding-top: 70px;
+    .titleSection {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        .textBlock {
+            width: 40%;
+            margin-bottom: 127px;
+            h2 {
+                margin-bottom: 36px;
+                font-size: 40px;
+            }
+            p {
+                font-size: 20px;
+            }
+        }
+        .imgBlock {
+            img {
+                position: absolute;
+                top: -35px;
+                right: 0;
+            }
+        }
+    }
+    .sliderSection {
+        margin-bottom: 107px;
+        h2 {
+            font-size: 30px;
+            margin-bottom: 17px;
+        }
+        p {
+            color: #949494;
+            margin-bottom: 27px;
+        }
+        
+    }
+    .resultBlock {
+        h2 {
+            font-size: 30px;
+            margin-bottom: 58px;
+        }
+        .cardWrapper {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 38px;
+        }
+
+        .btnSection {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 109px;
+            .showMore {
+                padding: 16px 51px;
+                font-size: 22px;
+                color: #fff;
+                line-height: 27px;
+                letter-spacing: 0.04em;
+            }
+        }
+    }
+}

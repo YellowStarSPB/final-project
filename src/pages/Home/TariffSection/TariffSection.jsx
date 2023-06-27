@@ -1,9 +1,10 @@
 import React from 'react';
+import TariffCard from '../../../components/TariffCard/TariffCard';
 
-import TariffCard from '../TariffCard/TariffCard';
-import { cardInfo } from '../TariffCard/mock';
+import { cardInfo } from '../../../components/TariffCard/mock';
 
 import styles from './TariffSection.module.scss';
+
 function TariffSection() {
     return (
         <section>

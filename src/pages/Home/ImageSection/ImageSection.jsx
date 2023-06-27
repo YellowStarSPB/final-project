@@ -1,6 +1,6 @@
 import React from 'react'
-import image1 from '../../assets/img/home/ImageSection1.svg'
-import image2 from '../../assets/img/home/ImageSection2.svg'
+import image1 from '../../../assets/img/home/ImageSection1.svg'
+import image2 from '../../../assets/img/home/ImageSection2.svg'
 import styles from './ImageSection.module.scss'
 function ImageSection() {
   return (
