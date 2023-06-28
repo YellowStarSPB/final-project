@@ -13,53 +13,12 @@ function TariffCard({
     currentTariff,
     includes,
     color,
+    isAuth
 }) {
+    
     return (
-        // <div
-        //     style={currentTariff ? { border: `2px solid ${color}` } : {}}
-        //     className={styles.card}
-        // >
-        //     <div style={{ background: color }} className={styles.cardTitle}>
-        //         <div style={color === '#000' ? { color: '#fff' } : {}}>
-        //             <h3>{titlte}</h3>
-        //             <p>{subTitle}</p>
-        //         </div>
-        //         <img src={img} alt="imagecard" />
-        //     </div>
-
-        //     <div className={styles.cardInfo}>
-        //         {currentTariff && (
-        //             <span className={styles.currentTariff}>Текущий тариф</span>
-        //         )}
-
-        //         <div
-        //             style={info ? {} : { marginBottom: '96px' }}
-        //             className={styles.price}
-        //         >
-        //             <p>{price.toLocaleString('ru-RU')} ₽</p>
-        //             <span>{oldPrice.toLocaleString('ru-RU')} ₽</span>
-        //         </div>
-
-        //         {info && <p className={styles.conditions}>{info}</p>}
-
-        //         <div className={styles.tariffIncludes}>
-        //             <h3>В тариф входит:</h3>
-        //             {includes.map((item, index) => (
-        //                 <div key={`${item}_${index}`}>
-        //                     <img src={checkMark} alt="mark" />
-        //                     {item}
-        //                 </div>
-        //             ))}
-        //         </div>
-        //         <Button
-        //             styles={currentTariff ? styles.currentTariffBtn : styles.tariffBtn}
-        //         >
-        //             {currentTariff ? 'Перейти в личный кабинет' : 'Подробнее'}
-        //         </Button>
-        //     </div>
-        // </div>
         <div
-            style={currentTariff ? { border: `2px solid ${color}` } : {}}
+            style={isAuth ? { border: `2px solid ${color}` } : {}}
             className={styles.card}
         >
             <div style={{ background: color }} className={styles.cardTitle}>
@@ -71,7 +30,7 @@ function TariffCard({
             </div>
 
             <div className={styles.cardInfo}>
-                {currentTariff && (
+                {isAuth && (
                     <span className={styles.currentTariff}>Текущий тариф</span>
                 )}
 

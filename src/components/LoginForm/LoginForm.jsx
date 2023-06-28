@@ -10,13 +10,13 @@ import styles from './LoginForm.module.scss';
 import { useDispatch } from 'react-redux';
 import { checkUserAuth } from '../../store/authorization/authorization-actions';
 
+
 function LoginForm() {
+    const dispatch = useDispatch();
     const [inputValue, setInputValue] = useState({
         login: 'sf_student10',
         password: 'KHKfTXb',
     });
-
-    const dispatch = useDispatch();
 
     const submitForm = (e) => {
         e.preventDefault();

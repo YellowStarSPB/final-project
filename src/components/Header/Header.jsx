@@ -1,40 +1,83 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { resetAuthorization } from '../../store/authorization/authorization-actions';
+
 import logo from '../../assets/img/header/logo.svg';
 import accauntLogo from '../../assets/img/header/accauntlogo.svg';
+import loaderImg from '../../assets/img/preloader/loader.svg';
+
 import styles from './Header.module.scss';
 
 function Header() {
+    const dispatch = useDispatch();
+    const { isAuth } = useSelector((state) => state.auth);
+    const { usedCompany, limitCompany, isLoading, error } = useSelector(
+        (state) => state.infoAccount,
+    );
     return (
         <header className={styles.header}>
-            <div className={styles.logo}>
+            <Link to="/" className={styles.logo}>
                 <img src={logo} alt="logo" />
-            </div>
+            </Link>
 
-            <div className={styles.wrapper}>
-                <ul className={styles.navigate}>
-                    <li>Главная</li>
-                    <li>Тарифы</li>
-                    <li>FAQ</li>
-                </ul>
-                <div className={styles.info}>
-                    <p>
-                        Использовано компаний <span>34</span>
-                    </p>
-                    <p>
-                        Лимит по компаниям <span style={{ color: '#8AC540' }}>100</span>
-                    </p>
-                </div>
+            <ul className={styles.navigate}>
+                <Link to="/">Главная</Link>
+                <li>Тарифы</li>
+                <li>FAQ</li>
+            </ul>
+            {isAuth ? (
+                <div className={styles.accountIsLogged}>
+                    <div className={styles.info}>
+                        {isLoading ? (
+                            <img
+                                className={styles.info__loading}
+                                src={loaderImg}
+                                alt="loader"
+                            />
+                        ) : (
+                            <>
+                                {error ? (
+                                    <span className={styles.info__error}>{error}</span>
+                                ) : (
+                                    <>
+                                        <p>
+                                            Использовано компаний{' '}
+                                            <span>{usedCompany}</span>
+                                        </p>
+                                        <p>
+                                            Лимит по компаниям{' '}
+                                            <span style={{ color: '#8AC540' }}>
+                                                {limitCompany}
+                                            </span>
+                                        </p>
+                                    </>
+                                )}
+                            </>
+                        )}
+                    </div>
 
-                <div className={styles.accauntWrapper}>
-                    <div className={styles.accauntWrapper__info}>
-                        <p>Алексей А.</p>
-                        <button>Выйти</button>
-                    </div>
-                    <div className={styles.accauntWrapper__img}>
-                        <img src={accauntLogo} alt="accauntLogo" />
+                    <div className={styles.accauntWrapper}>
+                        <div className={styles.accauntWrapper__info}>
+                            <p>Алексей А.</p>
+                            <button onClick={() => dispatch(resetAuthorization())}>
+                                Выйти
+                            </button>
+                        </div>
+                        <div className={styles.accauntWrapper__img}>
+                            <img src={accauntLogo} alt="accauntLogo" />
+                        </div>
                     </div>
                 </div>
-            </div>
+            ) : (
+                <div className={styles.accountIsNotLogged}>
+                    <button disabled className={styles.accountIsNotLogged__register_btn}>
+                        Зарегистрироваться
+                    </button>
+                    <Link to="/login" className={styles.accountIsNotLogged__singIn_btn}>
+                        Войти
+                    </Link>
+                </div>
+            )}
         </header>
     );
 }

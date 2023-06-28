@@ -3,7 +3,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 22px 60px;
-    
+    position: relative;
+    height: 108px;
     .logo {
         display: flex;
         align-items: center;
@@ -14,37 +15,58 @@
         }
     }
 
-    .wrapper {
+    .navigate {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        .navigate {
-            display: flex;
-            margin-right: 128px;
-            li {
-                margin-right: 49px;
-                font-size: 14px;
-                cursor: pointer;
-                &:last-child {
-                    margin: 0;
-                }
-            }
-            @media screen and (max-width: 1050px) {
-                display: none;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        @media screen and (max-width: 1200px) {
+            position: static;
+            transform: translateX(0);
+        }
+        @media screen and (max-width: 1050px) {
+            display: none;
+        }
+        a,
+        li {
+            margin-right: 49px;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #000;
+            cursor: pointer;
+            &:last-child {
+                margin-right: 0;
             }
         }
+    }
+    .accountIsLogged {
+        display: flex;
+        align-items: center;
         .info {
-            padding: 15px 10px;
             background: #d9d9d97f;
             border-radius: 5px;
-            text-align: center;
-            margin-right: 128px;
+            margin-right: 120px;
+            height: 63px;
+            width: 175px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             p {
                 font-size: 10px;
                 span {
                     font-size: 14px;
                     font-weight: 700;
                 }
+            }
+            &__error {
+                color: rgba(157, 31, 31, 0.866);
+                font-size: 14px;
+            }
+            &__loading {
+                animation: 1s linear infinite loader;
+                
             }
         }
         .accauntWrapper {
@@ -72,5 +94,34 @@
                 display: none;
             }
         }
+    }
+    .accountIsNotLogged {
+        display: flex;
+        &__register_btn {
+            font-size: 14px;
+            padding-right: 18px;
+            margin-right: 20px;
+            border-right: 2px solid #029491;
+            background: transparent;
+            cursor: not-allowed;
+        }
+        &__singIn_btn {
+            padding: 5px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 5px;
+            outline: none;
+            color: #000;
+            background: #7ce3e1;
+        }
+    }
+}
+
+@keyframes loader {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
     }
 }

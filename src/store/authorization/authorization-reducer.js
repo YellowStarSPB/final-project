@@ -1,8 +1,14 @@
-import { SET_AUTHORIZATION, SET_ERROR, SET_STATUS } from './authorization-actions';
+import {
+    LOCAL_AUTH,
+    RESET_AUTHORIZATION,
+    SET_AUTHORIZATION,
+    SET_ERROR,
+    SET_STATUS,
+} from './authorization-actions';
 
 const initialState = {
     token: '' || localStorage.getItem('token'),
-    timeOfDeathToken: '',
+    timeOfDeathToken: '' || localStorage.getItem('token-time'),
     status: '', // 'loading' 'completed' 'error'
     error: false,
     isAuth: false,
@@ -27,6 +33,15 @@ export const authorizationReducer = (state = initialState, action) => {
                 ...state,
                 token: action.payload.token,
                 timeOfDeathToken: action.payload.timeToDeath,
+                isAuth: true,
+            };
+        }
+        case RESET_AUTHORIZATION: {
+            return initialState;
+        }
+        case LOCAL_AUTH: {
+            return {
+                ...state,
                 isAuth: true,
             };
         }

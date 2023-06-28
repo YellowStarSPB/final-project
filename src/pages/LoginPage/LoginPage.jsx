@@ -1,11 +1,21 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import styles from './LoginPage.module.scss';
 import image from '../../assets/img/loginPage/image.png';
 
 import LoginForm from '../../components/LoginForm/LoginForm';
 import { useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
+
 function LoginPage() {
+    const { isAuth } = useSelector((state) => state.auth);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const fromPage = location.state?.from?.pathname || '/';
+
+    useEffect(() => {
+        if (isAuth) navigate(fromPage, { replace: true });
+    }, [isAuth]);
+
     return (
         <section className={styles.loginSection}>
             <div className={styles.titleWrapper}>

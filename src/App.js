@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import RequireAuth from './hoc/RequireAuth';
@@ -8,18 +8,19 @@ import Home from './pages/Home/Home';
 import LoginPage from './pages/LoginPage/LoginPage';
 import SearchPage from './pages/SearchPage/SearchPage';
 import SearchResult from './pages/SearchResult/SearchResult';
+import { localAuth } from './store/authorization/authorization-actions';
 
 function App() {
-    const { isAuth } = useSelector((state) => state.auth);
-    const location = useLocation();
-    const navigate = useNavigate();
-    const fromPage = location.state?.from?.pathname || '/';
-    console.log(fromPage)
+    // const dispatch = useDispatch();
+    // const { token, timeOfDeathToken, isAuth } = useSelector((state) => state.auth);
 
-    useEffect(() => {
-        navigate(fromPage, { replace: true });
-    }, [isAuth]);
-
+    // useEffect(() => {
+    //     localStorage.setItem('token', JSON.stringify(token));
+    //     localStorage.setItem('token-time', JSON.stringify(timeOfDeathToken));
+    //     if (token && timeOfDeathToken) {
+    //         dispatch(localAuth());
+    //     }
+    // }, []);
     return (
         <>
             <Header />
