@@ -33,6 +33,7 @@ export const authorizationReducer = (state = initialState, action) => {
                 ...state,
                 token: action.payload.token,
                 timeOfDeathToken: action.payload.timeToDeath,
+                error: false,
                 isAuth: true,
             };
         }

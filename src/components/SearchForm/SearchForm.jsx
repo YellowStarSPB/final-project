@@ -1,37 +1,52 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import arrowInput from '../../assets/img/searchPage/arrowInput.svg';
+import { getHistograms } from '../../store/search/search-actions';
 import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
 import styles from './SearchForm.module.scss';
 
-const tonality = ['Любая', 'Позитивная', 'Негативная'];
+const tonalityMock = [
+    { title: 'Любая', value: 'any' },
+    { title: 'Позитивная', value: 'positive' },
+    { title: 'Негативная', value: 'negative' },
+];
 const checkBoxLabel = [
-    'Признак максимальной полноты',
-    'Упоминания в бизнес-контексте',
-    'Главная роль в публикации',
-    'Публикации только с риск-факторами',
-    'Включать технические новости рынков',
-    'Включать анонсы и календари',
-    'Включать сводки новостей',
+    { label: 'Признак максимальной полноты', value: 'maxFullness' },
+    { label: 'Упоминания в бизнес-контексте', value: 'inBusinessNews' },
+    { label: 'Главная роль в публикации', value: 'onlyMainRole' },
+    { label: 'Публикации только с риск-факторами', value: 'onlyWithRiskFactors' },
+    { label: 'Включать технические новости рынков' },
+    { label: 'Включать анонсы и календари' },
+    { label: 'Включать сводки новостей' },
 ];
 const currentDate = new Date().toISOString().slice(0, 10);
 
 function SearchForm() {
+    const [formData, setFormData] = useState({
+        inn: '',
+        tonality: '',
+        countDocs: '',
+        dateSearch: { from: currentDate, to: currentDate },
+        searchParams: {
+            maxFullness: false,
+            inBusinessNews: false,
+            onlyMainRole: false,
+            onlyWithRiskFactors: false,
+        },
+    });
     //стейт выпадающего списка
     const [showTonality, setShowTonality] = useState(false);
     //стейт текущей тональности
-    const [currentTonality, setCurrentTonality] = useState('Любая');
+    const [currentTonality, setCurrentTonality] = useState(tonalityMock[0].title);
     //стейт тогла стрелки в инпуте даты
     const [showCalendar, setShowCalendar] = useState(false);
     const [showCalendar2, setShowCalendar2] = useState(false);
-    //рефы на блоки с инпутами дат
+    //рефы на блоки с инпутами дат для тогла стрелок
     const inputRef = useRef(null);
     const inputRef2 = useRef(null);
 
-    const handleChangeTonality = (item) => {
-        setCurrentTonality((prev) => (prev = item));
-        setShowTonality(!showTonality);
-    };
+    // console.log(formData);
     /* если кликнули не на инпуте дат, тоглим стрелку */
     useEffect(() => {
         const handleChangeDate = (event) => {
@@ -46,6 +61,35 @@ function SearchForm() {
         return () => document.body.removeEventListener('click', handleChangeDate);
     }, []);
 
+    //хэндлер ИНН
+    const handleChangeInn = (value) => {
+        setFormData((prev) => ({ ...prev, inn: value }));
+    };
+    //хэндлер тональности
+    const handleChangeTonality = (index) => {
+        setCurrentTonality((prev) => (prev = tonalityMock[index].title));
+        setFormData((prev) => ({ ...prev, tonality: tonalityMock[index].value }));
+        setShowTonality(!showTonality);
+    };
+    //хэндлер количества документов
+    const handleChangeCountDocs = (value) => {
+        setFormData((prev) => ({ ...prev, countDocs: value }));
+    };
+    //хэндлер даты
+    const handleChangeDateValue = (e) => {
+        setFormData((prev) => ({
+            ...prev,
+            dateSearch: { ...prev.dateSearch, [e.target.name]: e.target.value },
+        }));
+    };
+    //хэндлер чекбоксов
+    const handleChangeCheckbox = (e) => {
+        setFormData((prev) => ({
+            ...prev,
+            searchParams: { ...prev.searchParams, [e.target.id]: e.target.checked },
+        }));
+    };
+
     return (
         <form className={styles.searchForm}>
             <div className={styles.leftWrapper}>
@@ -54,7 +98,13 @@ function SearchForm() {
                     <label htmlFor="inn">
                         ИНН компании<span>*</span>
                     </label>
-                    <input type="text" placeholder="10 цифр" id="inn" />
+                    <input
+                        value={formData.inn}
+                        onChange={(e) => handleChangeInn(e.target.value)}
+                        type="text"
+                        placeholder="10 цифр"
+                        id="inn"
+                    />
                 </div>
 
                 {/* Тональность */}
@@ -74,12 +124,12 @@ function SearchForm() {
                     {showTonality && (
                         <div className={styles.tonalityPopup}>
                             <ul>
-                                {tonality.map((item) => (
+                                {tonalityMock.map(({ title }, index) => (
                                     <li
-                                        key={item}
-                                        onClick={() => handleChangeTonality(item)}
+                                        key={title}
+                                        onClick={() => handleChangeTonality(index)}
                                     >
-                                        {item}
+                                        {title}
                                     </li>
                                 ))}
                             </ul>
@@ -92,7 +142,13 @@ function SearchForm() {
                     <label htmlFor="count">
                         Количество документов в выдаче<span>*</span>
                     </label>
-                    <input type="number" placeholder="От 1 до 1000" id="count" />
+                    <input
+                        value={formData.countDocs}
+                        onChange={(e) => handleChangeCountDocs(e.target.value)}
+                        type="number"
+                        placeholder="От 1 до 1000"
+                        id="count"
+                    />
                 </div>
 
                 {/* диапазон */}
@@ -103,7 +159,11 @@ function SearchForm() {
                     <div className={styles.dateWrapper}>
                         <div ref={inputRef} className={styles.block}>
                             <input
+                                value={formData.dateSearch.from}
+                                onChange={(e) => handleChangeDateValue(e)}
+                                max={new Date().toISOString().slice(0, 10)}
                                 onFocus={() => setShowCalendar(!showCalendar)}
+                                name="from"
                                 type="date"
                             />
                             <img
@@ -115,7 +175,11 @@ function SearchForm() {
 
                         <div ref={inputRef2} className={styles.block}>
                             <input
+                                value={formData.dateSearch.to}
+                                onChange={(e) => handleChangeDateValue(e)}
+                                max={new Date().toISOString().slice(0, 10)}
                                 onFocus={() => setShowCalendar2(!showCalendar2)}
+                                name="to"
                                 type="date"
                             />
                             <img
@@ -130,10 +194,23 @@ function SearchForm() {
 
             <div className={styles.rightWrapper}>
                 <div className={styles.checkBoxWrapper}>
-                    {checkBoxLabel.map((item) => (
-                        <div key={item} className={styles.checkBox}>
-                            <input className={styles.customCheckbox} type="checkbox" />
-                            <label>{item}</label>
+                    {checkBoxLabel.map(({ label, value }) => (
+                        <div key={label} className={styles.checkBox}>
+                            <input
+                                id={value ? value : label}
+                                checked={formData.searchParams[value]}
+                                onChange={(e) => handleChangeCheckbox(e)}
+                                className={styles.customCheckbox}
+                                type="checkbox"
+                                disabled={value ? false : true}
+                                style={!value ? { cursor: 'not-allowed' } : {}}
+                            />
+                            <label
+                                style={!value ? { cursor: 'not-allowed' } : {}}
+                                htmlFor={value ? value : label}
+                            >
+                                {label}
+                            </label>
                         </div>
                     ))}
                 </div>

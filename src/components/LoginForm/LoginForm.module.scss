@@ -36,6 +36,7 @@
             }
         }
         .inputWrapper {
+            
             label {
                 margin-bottom: 15px;
                 color: #949494;
@@ -46,11 +47,28 @@
                 padding: 12px 0 12px 20px;
                 font-size: 16px;
             }
+            input.error {
+                border: 1px solid #ff5959;
+                box-shadow: 0px 0px 20px 0px rgba(255, 89, 89, 0.2);
+            }
             .loginInput {
                 margin-bottom: 20px;
             }
             .passwordInput {
                 margin-bottom: 30px;
+            }
+            .errorWrapper {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .errorMessage {
+                    position: absolute;
+                    text-align: center;
+                    font-size: 14px;
+                    top: -25px;
+                    color: #ff5959;
+                }
             }
         }
         .submit {
@@ -69,13 +87,13 @@
             display: flex;
             justify-content: center;
             margin-bottom: 30px;
-            button {
+            p {
                 background: none;
                 color: #5970ff;
                 font-size: 14px;
                 text-decoration: underline;
                 letter-spacing: 0.02em;
-                cursor: pointer;
+                cursor: not-allowed;
             }
         }
         .entryOptions {

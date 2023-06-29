@@ -7,12 +7,12 @@ import keyLockImg from '../../assets/img/form/keylock.svg';
 
 import styles from './LoginForm.module.scss';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { checkUserAuth } from '../../store/authorization/authorization-actions';
-
 
 function LoginForm() {
     const dispatch = useDispatch();
+    const { error, status } = useSelector((state) => state.auth);
     const [inputValue, setInputValue] = useState({
         login: 'sf_student10',
         password: 'KHKfTXb',
@@ -26,7 +26,7 @@ function LoginForm() {
     return (
         <div className={styles.formWrapper}>
             <img className={styles.keyLock} src={keyLockImg} alt="keylock" />
-            <form onSubmit={() => {}} className={styles.form}>
+            <form className={styles.form}>
                 <div className={styles.btnWrapper}>
                     <button disabled className={styles.login}>
                         Войти
@@ -40,6 +40,7 @@ function LoginForm() {
                     <div className={styles.loginInput}>
                         <label htmlFor="login">Логин или номер телефона:</label>
                         <input
+                            className={status === 'error' ? styles.error : {}}
                             onChange={(e) =>
                                 setInputValue((prev) => ({
                                     ...prev,
@@ -53,6 +54,7 @@ function LoginForm() {
                     <div className={styles.passwordInput}>
                         <label htmlFor="password">Логин или номер телефона:</label>
                         <input
+                            className={status === 'error' ? styles.error : {}}
                             onChange={(e) =>
                                 setInputValue((prev) => ({
                                     ...prev,
@@ -64,15 +66,25 @@ function LoginForm() {
                             id="password"
                         />
                     </div>
+                    {status === 'error' && (
+                        <div className={styles.errorWrapper}>
+                            <p className={styles.errorMessage}>{error}</p>
+                        </div>
+                    )}
                 </div>
                 <Button
                     onClick={submitForm}
-                    styles={`${styles.submit} ${styles.disabled}`}
+                    styles={`${styles.submit} ${
+                        inputValue.login === '' || inputValue.password === ''
+                            ? styles.disabled
+                            : ''
+                    }`}
+                    disabled={inputValue.login === '' || inputValue.password === ''}
                 >
                     Войти
                 </Button>
                 <div className={styles.recoverPassword}>
-                    <button>Восстановить пароль</button>
+                    <p>Восстановить пароль</p>
                 </div>
                 <div className={styles.entryOptions}>
                     <p>Войти через:</p>
