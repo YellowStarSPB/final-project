@@ -49,6 +49,36 @@
             @media screen and (max-width: 1050px) {
                 width: 85%;
             }
+            .loaderHistogram {
+                text-align: center;
+                position: absolute;
+                height: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                p {
+                    color: #000;
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    letter-spacing: 0.36px;
+                    margin: 0;
+                }
+                .loaderImg {
+                    width: 50px;
+                    height: 50px;
+                    animation: 1s linear infinite loader;
+                    margin-bottom: 11px;
+                }
+                @keyframes loader {
+                    0% {
+                        transform: rotate(0);
+                    }
+                    100% {
+                        transform: rotate(360deg);
+                    }
+                }
+            }
         }
         &__item {
             text-align: center;

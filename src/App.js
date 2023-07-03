@@ -36,6 +36,14 @@ function App() {
                             </RequireAuth>
                         }
                     />
+                    <Route
+                        path="/result-search"
+                        element={
+                            <RequireAuth>
+                                <SearchResult />
+                            </RequireAuth>
+                        }
+                    />
                     <Route path="/login" element={<LoginPage />} />
                 </Routes>
             </main>

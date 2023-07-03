@@ -1,8 +1,8 @@
 .resultCard {
-    width: 49%;
     padding: 19px 30px 35px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
+    height: fit-content;
     .cardInfo {
         font-size: 16px;
         color: #949494;
@@ -11,7 +11,8 @@
         span {
             margin-right: 14px;
         }
-        p {
+        a {
+            color: #949494;
             text-decoration: underline;
             cursor: pointer;
         }
@@ -42,8 +43,14 @@
     }
     .cardText {
         font-size: 16px;
-        opacity: 0.5;
+        color: rgba(0, 0, 0, 0.5);
         margin-bottom: 32px;
+            img{
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+            }
+        
     }
     .cardFooter {
         display: flex;

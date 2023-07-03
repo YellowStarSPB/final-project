@@ -3,7 +3,29 @@
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     display: flex;
+    .errorInput {
+        border: 1px solid #ff5959;
+        box-shadow: 0px 0px 20px 0px rgba(255, 89, 89, 0.2);
+        color: #ff5959;
+    }
 
+    .errorInputRequired {
+        color: #ff5959;
+    }
+    .errorInputMessage,
+    .requiredInputMessage {
+        position: absolute;
+        color: #ff5959;
+        font-size: 14px;
+    }
+    .errorInputMessage {
+        bottom: -20px;
+        left: 19px;
+    }
+    .requiredInputMessage {
+        bottom: -20px;
+        left: 54px;
+    }
     .leftWrapper {
         width: 45%;
         margin-right: 11px;
@@ -22,6 +44,7 @@
         .innCompany,
         .count {
             margin-bottom: 30px;
+            position: relative;
             input {
                 &:focus {
                     padding: 13px 17px;
@@ -36,6 +59,12 @@
                     letter-spacing: 0.03em;
                     color: #949494;
                     opacity: 0.4;
+                }
+            }
+            input.errorInput {
+                &::placeholder {
+                    opacity: 1;
+                    color: #ff5959;
                 }
             }
         }
@@ -96,8 +125,18 @@
                 }
             }
         }
-
         .calendarWrapper {
+            position: relative;
+            .requiredInputMessage {
+                width: 100%;
+                left: 0;
+                text-align: center;
+            }
+            .errorInputMessage {
+                width: 100%;
+                left: 0;
+                text-align: center;
+            }
             label {
                 cursor: default;
             }
@@ -198,6 +237,10 @@
                 font-size: 22px;
                 color: #fff;
                 margin-bottom: 10px;
+            }
+            .disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
             }
             div {
                 text-align: start;
