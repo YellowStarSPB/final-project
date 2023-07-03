@@ -2,7 +2,7 @@
     padding: 19px 30px 35px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    height: fit-content;
+    height: 700px;
     .cardInfo {
         font-size: 16px;
         color: #949494;
@@ -23,6 +23,8 @@
         letter-spacing: 0.02em;
         padding-right: 65px;
         margin-bottom: 14px;
+        height: 62px;
+        overflow: hidden;
     }
     .cardAttributes {
         display: inline-block;
@@ -45,12 +47,21 @@
         font-size: 16px;
         color: rgba(0, 0, 0, 0.5);
         margin-bottom: 32px;
-            img{
-                width: 100%;
-                height: auto;
-                object-fit: cover;
-            }
-        
+        height: 228px;
+        overflow: hidden;
+        br {
+            display: none;
+        }
+        a {
+            display: none;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+
+        img {
+            display: none;
+        }
     }
     .cardFooter {
         display: flex;

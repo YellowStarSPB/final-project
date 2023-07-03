@@ -41,18 +41,21 @@ function SearchForm() {
             onlyWithRiskFactors: false,
         },
     });
+
     const [errorsForm, setErrorsForm] = useState({
-        inn: true,
-        countDocs: true,
-        dateSearch: { from: true, to: true },
+        inn: '',
+        countDocs: '',
+        from: '',
+        to: '',
     });
     const [requiredInput, setRequiredInput] = useState({
-        inn: true,
-        countDocs: true,
-        dateSearch: { from: true, to: true },
+        inn: '',
+        countDocs: '',
+        from: '',
+        to: '',
     });
-    console.log('err',errorsForm, 'req',requiredInput);
-    const [disabledBtn, setDisabledBtn] = useState(true);
+
+    const [disabledBtn, setDisabledBtn] = useState(false);
     //стейт выпадающего списка
     const [showTonality, setShowTonality] = useState(false);
     //стейт текущей тональности
@@ -81,23 +84,23 @@ function SearchForm() {
         return () => document.body.removeEventListener('click', handleChangeDate);
     }, []);
 
-    // useEffect(() => {
-    //     for (let key in errorsForm) {
-    //         if (typeof errorsForm[key] === 'object') {
-    //             for (let prop in errorsForm[key]) {
-    //                 if (errorsForm[key][prop] === false || errorsForm[key][prop] === '') {
-    //                     setDisabledBtn(true);
-    //                 }
-    //             }
-    //         }
-    //         if (errorsForm[key] === false || errorsForm[key] === '') {
-    //             setDisabledBtn(true);
-    //         }
-    //         if (errorsForm[key] !== false || errorsForm[key] !== '') {
-    //             setDisabledBtn(false);
-    //         }
-    //     }
-    // }, [errorsForm, requiredInput]);
+    useEffect(() => {
+        for (let key in errorsForm) {
+            console.log(errorsForm[key]);
+            if (!errorsForm[key]) {
+                setDisabledBtn(true);
+                return;
+            }
+        }
+        for (let key in requiredInput) {
+            console.log(errorsForm[key]);
+            if (!requiredInput[key]) {
+                setDisabledBtn(true);
+                return;
+            }
+        }
+        setDisabledBtn(false);
+    }, [errorsForm, requiredInput]);
     //хэндлер ИНН
     const handleChangeInn = (value) => {
         setFormData((prev) => ({ ...prev, inn: value }));
@@ -160,32 +163,38 @@ function SearchForm() {
         if (!formData.dateSearch.from || !formData.dateSearch.to) {
             setRequiredInput((prev) => ({
                 ...prev,
-                dateSearch: { ...prev.dateSearch, from: false, to: false },
+                from: false,
+                to: false,
             }));
             setErrorsForm((prev) => ({
                 ...prev,
-                dateSearch: { ...prev.dateSearch, from: true, to: true },
+                from: true,
+                to: true,
             }));
             return;
         }
         if (formData.dateSearch.from > formData.dateSearch.to) {
             setRequiredInput((prev) => ({
                 ...prev,
-                dateSearch: { ...prev.dateSearch, to: true, from: true },
+                to: true,
+                from: true,
             }));
             setErrorsForm((prev) => ({
                 ...prev,
-                dateSearch: { ...prev.dateSearch, from: false, to: false },
+                from: false,
+                to: false,
             }));
             return;
         }
         setRequiredInput((prev) => ({
             ...prev,
-            dateSearch: { from: true, to: true },
+            from: true,
+            to: true,
         }));
         setErrorsForm((prev) => ({
             ...prev,
-            dateSearch: { from: true, to: true },
+            from: true,
+            to: true,
         }));
     };
     //хэндлер чекбоксов
@@ -322,10 +331,10 @@ function SearchForm() {
                         Диапазон поиска
                         <span
                             className={
-                                errorsForm.dateSearch.from === false ||
-                                errorsForm.dateSearch.to === false ||
-                                requiredInput.dateSearch.from === false ||
-                                requiredInput.dateSearch.to === false
+                                errorsForm.from === false ||
+                                errorsForm.to === false ||
+                                requiredInput.from === false ||
+                                requiredInput.to === false
                                     ? styles.errorInputRequired
                                     : ''
                             }
@@ -337,8 +346,8 @@ function SearchForm() {
                         <div ref={inputRef} className={styles.block}>
                             <input
                                 className={
-                                    errorsForm.dateSearch.from === false ||
-                                    requiredInput.dateSearch.from === false
+                                    errorsForm.from === false ||
+                                    requiredInput.from === false
                                         ? styles.errorInput
                                         : ''
                                 }
@@ -360,8 +369,7 @@ function SearchForm() {
                         <div ref={inputRef2} className={styles.block}>
                             <input
                                 className={
-                                    errorsForm.dateSearch.to === false ||
-                                    requiredInput.dateSearch.to === false
+                                    errorsForm.to === false || requiredInput.to === false
                                         ? styles.errorInput
                                         : ''
                                 }
@@ -379,14 +387,12 @@ function SearchForm() {
                                 alt="arrow"
                             />
                         </div>
-                        {(requiredInput.dateSearch.from === false ||
-                            requiredInput.dateSearch.to === false) && (
+                        {(requiredInput.from === false || requiredInput.to === false) && (
                             <div className={styles.requiredInputMessage}>
                                 Обязательное поле
                             </div>
                         )}
-                        {(errorsForm.dateSearch.from === false ||
-                            errorsForm.dateSearch.to === false) && (
+                        {(errorsForm.from === false || errorsForm.to === false) && (
                             <div className={styles.errorInputMessage}>
                                 Введите корректные данные
                             </div>

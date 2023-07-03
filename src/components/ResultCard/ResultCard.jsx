@@ -9,7 +9,6 @@ function ResultCard({ issueDate, url, source, title, attributes, content }) {
         USE_PROFILES: { html: true },
         ALLOWED_TAGS: [],
     });
-    console.log(parse(markup));
 
     return (
         <div className={styles.resultCard}>
@@ -18,13 +17,13 @@ function ResultCard({ issueDate, url, source, title, attributes, content }) {
                 <a href={url}>{source.name}</a>
             </div>
             <h3 className={styles.cardTitle}>{title.text}</h3>
-            {/* <span className={styles.cardAttributes}>Технические новости</span>
+            <span className={styles.cardAttributes}>Без категории</span>
             <div className={styles.cardImage}>
                 <img src={cartImg} alt="docImage" />
-            </div> */}
+            </div>
             <div
                 className={styles.cardText}
-                dangerouslySetInnerHTML={{ __html: parse(markup) }}
+                dangerouslySetInnerHTML={{ __html: parse(markup.slice(0, 600)+'...') }}
             ></div>
             <div className={styles.cardFooter}>
                 <div className={styles.cardBtn}>
