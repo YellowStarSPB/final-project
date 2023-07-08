@@ -6,7 +6,6 @@ import LoginForm from '../../components/LoginForm/LoginForm';
 import { useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-
 function LoginPage() {
     const { isAuth, status, error } = useSelector((state) => state.auth);
     const navigate = useNavigate();
@@ -40,14 +39,9 @@ function LoginPage() {
                     </div>
                 </div>
             )}
-            {/* {showCatchErr && (
-                <div className={styles.catchErr}>
-                    <div className={styles.catchErr__message}>
-                        <h3>{error}</h3>
-                        <Button onClick={() => setShowCatchErr(false)}>Понятно</Button>
-                    </div>
-                </div>
-            )} */}
+            <div className={styles.show500}>
+                <img src={image} alt="titleImage" />
+            </div>
         </section>
     );
 }

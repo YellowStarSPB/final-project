@@ -1,26 +1,61 @@
 .searchResultSection {
     height: 100%;
     padding-top: 70px;
+    @media screen and (max-width: 500px) {
+        padding-top: 20px;
+    }
     .titleSection {
         display: flex;
         justify-content: space-between;
         position: relative;
+        @media screen and (max-width: 815px) {
+            flex-direction: column;
+            align-items: center;
+        }
         .textBlock {
             width: 40%;
             margin-bottom: 127px;
+            @media screen and (max-width: 1050px) {
+                width: 53%;
+            }
+            @media screen and (max-width: 815px) {
+                width: 100%;
+                margin-bottom: 0;
+            }
+            @media screen and (max-width: 500px) {
+            }
             h2 {
                 margin-bottom: 36px;
                 font-size: 40px;
+                @media screen and (max-width: 500px) {
+                    font-size: 28px;
+                    line-height: normal;
+                }
             }
             p {
                 font-size: 20px;
+                @media screen and (max-width: 500px) {
+                    font-size: 18px;
+                }
             }
         }
         .imgBlock {
+            @media screen and (max-width: 815px) {
+                width: 100%;
+                margin-bottom: 60px;
+            }
             img {
                 position: absolute;
                 top: -35px;
                 right: 0;
+                @media screen and (max-width: 1050px) {
+                    z-index: -1;
+                }
+                @media screen and (max-width: 815px) {
+                    position: relative;
+                    top: 0;
+                    width: 80%;
+                }
             }
         }
     }
@@ -47,6 +82,12 @@
             grid-template-rows: auto;
             grid-auto-flow: dense;
             gap: 38px;
+            @media screen and (max-width: 900px) {
+                grid-template-columns: auto;
+            }
+            @media screen and (max-width: 500px) {
+                display: block;
+            }
         }
         .loaderDocuments {
             text-align: center;
