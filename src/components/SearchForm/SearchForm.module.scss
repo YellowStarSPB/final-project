@@ -3,10 +3,44 @@
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     display: flex;
+    @media screen and (max-width: 750px) {
+        width: 70%;
+        margin: 0 auto;
+        flex-direction: column;
+        padding: 24px 26px 37px;
+    }
+    @media screen and (max-width: 500px) {
+        width: 100%;
+    }
+    .errorInput {
+        border: 1px solid #ff5959;
+        box-shadow: 0px 0px 20px 0px rgba(255, 89, 89, 0.2);
+        color: #ff5959;
+    }
 
+    .errorInputRequired {
+        color: #ff5959;
+    }
+    .errorInputMessage,
+    .requiredInputMessage {
+        position: absolute;
+        color: #ff5959;
+        font-size: 14px;
+    }
+    .errorInputMessage {
+        bottom: -20px;
+        left: 19px;
+    }
+    .requiredInputMessage {
+        bottom: -20px;
+        left: 54px;
+    }
     .leftWrapper {
         width: 45%;
         margin-right: 11px;
+        @media screen and (max-width: 750px) {
+            width: 100%;
+        }
         label {
             display: inline-block;
             margin-bottom: 20px;
@@ -18,10 +52,18 @@
             width: 242px;
             padding: 13px 17px;
             font-size: 14px;
+            @media screen and (max-width: 750px) {
+                width: 100%;
+            }
         }
         .innCompany,
         .count {
             margin-bottom: 30px;
+            position: relative;
+            @media screen and (max-width: 1050px) {
+                display: flex;
+                flex-direction: column;
+            }
             input {
                 &:focus {
                     padding: 13px 17px;
@@ -38,6 +80,12 @@
                     opacity: 0.4;
                 }
             }
+            input.errorInput {
+                &::placeholder {
+                    opacity: 1;
+                    color: #ff5959;
+                }
+            }
         }
         .count {
             input {
@@ -51,6 +99,9 @@
         .tonalityWrapper {
             position: relative;
             margin-bottom: 20px;
+            @media screen and (max-width: 750px) {
+                width: 100%;
+            }
             p {
                 font-size: 18px;
                 margin-bottom: 20px;
@@ -71,6 +122,9 @@
                 letter-spacing: 0.03em;
                 padding: 13px 15px 13px 22px;
                 margin-bottom: 5px;
+                @media screen and (max-width: 750px) {
+                    width: 100%;
+                }
             }
             .tonalityPopup {
                 position: absolute;
@@ -80,7 +134,9 @@
                 z-index: 1000;
                 background-color: #fff;
                 overflow: hidden;
-
+                @media screen and (max-width: 750px) {
+                    width: 100%;
+                }
                 ul {
                     li {
                         width: 100%;
@@ -96,20 +152,43 @@
                 }
             }
         }
-
         .calendarWrapper {
+            position: relative;
+            @media screen and (max-width: 750px) {
+                margin-bottom: 40px;
+            }
+            .requiredInputMessage {
+                width: 100%;
+                left: 0;
+                text-align: center;
+            }
+            .errorInputMessage {
+                width: 100%;
+                left: 0;
+                text-align: center;
+            }
             label {
                 cursor: default;
             }
             .dateWrapper {
                 display: flex;
                 justify-content: space-between;
+                @media screen and (max-width: 750px) {
+                    display: block;
+                }
                 .rotate {
                     transform: rotate(180deg);
                 }
                 .block {
                     width: 49%;
                     position: relative;
+                    @media screen and (max-width: 750px) {
+                        width: 100%;
+                        margin-bottom: 20px;
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
                     input {
                         width: 100%;
                         padding: 13px 10px 13px 17px;
@@ -140,9 +219,15 @@
     .rightWrapper {
         width: 55%;
         padding-top: 10px;
+        @media screen and (max-width: 750px) {
+            width: 100%;
+        }
         .checkBoxWrapper {
             width: 100%;
             margin-bottom: 145px;
+            @media screen and (max-width: 750px) {
+                display: none;
+            }
             .checkBox {
                 margin-bottom: 15px;
 
@@ -193,15 +278,31 @@
             display: flex;
             align-items: flex-end;
             flex-direction: column;
+            @media screen and (max-width: 750px) {
+                align-items: center;
+                width: 100%;
+            }
             .searchBtn {
                 padding: 16px 118px;
                 font-size: 22px;
                 color: #fff;
                 margin-bottom: 10px;
+                @media screen and (max-width: 500px) {
+                    width: 100%;
+                    padding: 16px 0;
+                }
+            }
+            .disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
             }
             div {
                 text-align: start;
                 width: 70%;
+                @media screen and (max-width: 750px) {
+                    width: 100%;
+                    text-align: center;
+                }
                 span {
                     font-size: 14px;
                     color: #949494;

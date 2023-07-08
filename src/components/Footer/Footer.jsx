@@ -4,7 +4,7 @@ import styles from './Footer.module.scss';
 function Footer() {
     return (
         <footer className={styles.footer}>
-            <div>
+            <div className={styles.img}>
                 <img src={logoTransparent} alt="logo" />
             </div>
             <div className={styles.info}>

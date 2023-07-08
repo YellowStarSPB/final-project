@@ -20,6 +20,9 @@
         border-radius: 10px;
         display: flex;
         align-items: center;
+        @media screen and (max-width: 500px) {
+            padding: 30px 17px;
+        }
     }
 }
 .about {

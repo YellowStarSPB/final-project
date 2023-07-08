@@ -25,8 +25,8 @@ function LoginForm() {
 
     return (
         <div className={styles.formWrapper}>
-            <img className={styles.keyLock} src={keyLockImg} alt="keylock" />
             <form className={styles.form}>
+                <img className={styles.keyLock} src={keyLockImg} alt="keylock" />
                 <div className={styles.btnWrapper}>
                     <button disabled className={styles.login}>
                         Войти
