@@ -28,7 +28,6 @@ export const getInfoAccount = (token) => async (dispatch) => {
             },
         );
         const data = await response.json();
-        console.log(data);
         const { eventFiltersInfo } = data;
         if (response.ok) {
             dispatch(setInfoAccount(eventFiltersInfo));

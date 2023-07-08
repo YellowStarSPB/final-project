@@ -9,7 +9,9 @@
     border: none;
     font-family: 'Inter', sans-serif;
 }
-
+#root {
+    overflow: hidden;
+}
 html {
     font-size: 18px;
     font-weight: 400;
@@ -29,6 +31,12 @@ h2 {
     letter-spacing: 0.01em;
     @media screen and (max-width: 1050px) {
         margin-bottom: 32px;
+    }
+    @media screen and (max-width: 750px) {
+        font-size: 30px;
+    }
+    @media screen and (max-width: 500px) {
+        font-size: 28px;
     }
 }
 

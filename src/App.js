@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
+import MobileNav from './components/MobileNav/MobileNav';
 import RequireAuth from './hoc/RequireAuth';
 import Home from './pages/Home/Home';
 import LoginPage from './pages/LoginPage/LoginPage';
@@ -21,10 +22,10 @@ function App() {
     //         dispatch(localAuth());
     //     }
     // }, []);
+
     return (
         <>
             <Header />
-
             <main className="container">
                 <Routes>
                     <Route path="/" element={<Home />} />
@@ -33,6 +34,14 @@ function App() {
                         element={
                             <RequireAuth>
                                 <SearchPage />
+                            </RequireAuth>
+                        }
+                    />
+                    <Route
+                        path="/result-search"
+                        element={
+                            <RequireAuth>
+                                <SearchResult />
                             </RequireAuth>
                         }
                     />

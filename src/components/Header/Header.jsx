@@ -7,6 +7,8 @@ import accauntLogo from '../../assets/img/header/accauntlogo.svg';
 import loaderImg from '../../assets/img/preloader/loader.svg';
 
 import styles from './Header.module.scss';
+import { useEffect, useState } from 'react';
+import MobileNav from '../MobileNav/MobileNav';
 
 function Header() {
     const dispatch = useDispatch();
@@ -14,6 +16,16 @@ function Header() {
     const { usedCompany, limitCompany, isLoading, error } = useSelector(
         (state) => state.infoAccount,
     );
+    const [showMobileNav, setShowMobileNav] = useState(false);
+
+    useEffect(() => {
+        if (showMobileNav) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    }, [showMobileNav]);
+    console.log(showMobileNav);
     return (
         <header className={styles.header}>
             <Link to="/" className={styles.logo}>
@@ -25,6 +37,11 @@ function Header() {
                 <li>Тарифы</li>
                 <li>FAQ</li>
             </ul>
+
+            <MobileNav
+                showMobileNav={showMobileNav}
+                setShowMobileNav={setShowMobileNav}
+            />
             {isAuth ? (
                 <div className={styles.accountIsLogged}>
                     <div className={styles.info}>
@@ -78,6 +95,16 @@ function Header() {
                     </Link>
                 </div>
             )}
+            <div
+                onClick={() => setShowMobileNav(!showMobileNav)}
+                className={`${styles.mobileNavBtn} ${
+                    showMobileNav ? styles.activeNav : ''
+                }`}
+            >
+                <div className={styles.navBlock}></div>
+                <div className={styles.navBlock}></div>
+                <div className={styles.navBlock}></div>
+            </div>
         </header>
     );
 }

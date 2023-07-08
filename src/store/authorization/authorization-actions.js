@@ -36,6 +36,7 @@ export const checkUserAuth =
     ({ login, password }) =>
     async (dispatch) => {
         dispatch(setStatus('loading'));
+        dispatch(setError(false))
         try {
             const response = await fetch(
                 'https://gateway.scan-interfax.ru/api/v1/account/login',
@@ -64,11 +65,11 @@ export const checkUserAuth =
                 dispatch(setStatus('completed'));
             } else {
                 const { message } = data;
-                dispatch(setError(message));
                 dispatch(setStatus('error'));
+                dispatch(setError(message.slice(0, 30)));
             }
         } catch (error) {
-            console.log(error);
+            dispatch(setStatus('error-catch'));
             dispatch(setError('Что-то пошло не так'));
         }
     };
